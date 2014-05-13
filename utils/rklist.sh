@@ -18,9 +18,8 @@ WHERE=$TINIBA/src_ibz
 BASEDIR=`dirname $PWD`
 CASO=`basename $PWD`
 PARENT=`basename $BASEDIR`
-yo=`hostname`
 	
-if [[ "$yo" == "hexa"* || "$yo" == "medusa" ]]; then
+if [[ `hostname` == "hexa"* || `hostname` == "medusa" ]]; then
     IIBBZZ=$WHERE/ibz.hexa
 else
     IIBBZZ=$WHERE/ibz."`hostname  | sed 's/[0-9]//g'`"
