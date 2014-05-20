@@ -55,6 +55,7 @@ MODULE inparams
   CHARACTER(LEN=80) ::  pmn_data_filename     ! momentum me input file
 !!!FN
   CHARACTER(LEN=80) ::  cal_data_filename     !caligrpahic momentum matrix elements
+  CHARACTER(LEN=80) ::  calf_data_filename     !caligrpahic momentum matrix elements
   CHARACTER(LEN=80) ::  cur_data_filename     !caligrpahic current momentum matrix elements
 !!!FN
   CHARACTER(LEN=80) ::  rmn_data_filename     ! position me output file
@@ -237,7 +238,7 @@ CONTAINS
     NAMELIST/INDATA/energy_data_filename, energys_data_filename
     NAMELIST/INDATA/half_energys_data_filename
 !!! FN
-    NAMELIST/INDATA/pmn_data_filename, rmn_data_filename, cal_data_filename
+    NAMELIST/INDATA/pmn_data_filename, rmn_data_filename, cal_data_filename, calf_data_filename
     NAMELIST/INDATA/cur_data_filename
 !!!FN
     NAMELIST/INDATA/smn_data_filename, der_data_filename
@@ -295,6 +296,7 @@ CONTAINS
 !!!FN
 !!!OJO
        WRITE(*,*) "cal_data_filename ", TRIM(cal_data_filename)
+       WRITE(*,*) "calf_data_filename ", TRIM(calf_data_filename)
        WRITE(*,*) "cur_data_filename ", TRIM(cur_data_filename)
 !!!FN
        WRITE(*,*) "rmn_data_filename ", TRIM(rmn_data_filename)

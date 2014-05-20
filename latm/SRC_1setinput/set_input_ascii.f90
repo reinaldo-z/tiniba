@@ -64,6 +64,7 @@ PROGRAM set_input
   USE arrays, ONLY : calDelta
   USE arrays, ONLY : calMomMatElem, cal_data_filename
   !!!!!!!!!!
+  USE arrays, ONLY : calCutMatElem, calf_data_filename
   USE arrays, ONLY : calPosMatElem
   USE arrays, ONLY : efe
   !!!!!!!!!!
@@ -146,8 +147,17 @@ PROGRAM set_input
   IF ( layeredCalculation ) THEN
 !     WRITE(*,*) "Found file ", TRIM(cal_data_filename), " => Performing layer P calculation"
      OPEN(16, FILE=cal_data_filename,IOSTAT=io_status)
+     OPEN(92, FILE=calf_data_filename,IOSTAT=io_status)
 !  else
 !     WRITE(6,*) "no cal_data_filename => no-caligraphic P calculation"
+  END IF
+
+  INQUIRE(FILE=calf_data_filename, EXIST=layeredCalculation)
+  IF ( layeredCalculation ) THEN
+!     WRITE(*,*) "Found file ", TRIM(calf_data_filename), " => Performing layer F calculation"
+     OPEN(92, FILE=calf_data_filename,IOSTAT=io_status)
+!  else
+!     WRITE(6,*) "no calf_data_filename => no-caligraphic F calculation"
   END IF
 
   INQUIRE(FILE=cur_data_filename, EXIST=layeredInjectionCurrent)
@@ -283,7 +293,8 @@ PROGRAM set_input
                     END IF
                  end if !iv=ic
               END IF
-!!! 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! CalPmn, CarRmn, and CalFmn
 !!! FN
            IF ( layeredCalculation ) then
               READ(16,*) (matTemp(l),l=1,6)
@@ -303,8 +314,6 @@ PROGRAM set_input
               END IF
            END IF
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           !! Calculate the calPosMatElem matrix elements 
           !! despues de calcular los calMomMatElem 
            IF ( layeredCalculation ) then
@@ -314,8 +323,23 @@ PROGRAM set_input
               END DO
            end if
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            !! The layered cut function
+           IF ( layeredCalculation ) then
+              READ(92,*) (matTemp(l),l=1,6)
+              IF(io_status.NE.0) THEN
+                 WRITE(*,*) "ERROR: Could not read matTemp for layered calculation. Stopping"
+                 WRITE(*,*) "Error number ", io_status
+                 STOP "COULD NOT READ matTemp"
+              ELSE
+                 calCutMatElem(1,iv,ic) = matTemp(1) + (0.0d0,1.0d0)*matTemp(2)
+              END IF
+              IF (ic.NE.iv) THEN
+                 DO ii=1,3
+                   calCutMatElem(ii,ic,iv) = CONJG(calCutMatElem(ii,iv,ic))
+                 END DO
+              END IF
+           END IF
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! jl 
 
 
 !!! 

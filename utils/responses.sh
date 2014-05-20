@@ -214,6 +214,7 @@ TIMESTARTALLI=`date`
 #	    rhomm='me_rhomm_'
 	    rhomm='me_rhoccp_'
 	    cal='me_cpmn_'
+	    calf='me_cfmn_'
 	    cur='me_cpnn_'
 	    aux='nada' # nada is fine
 	else
@@ -425,6 +426,7 @@ TIMESTARTALLI=`date`
 			exit 1
 		    fi
 		    echo cal_data_filename= \""$cal$pfix"\", >> tmp_$pfix
+		    echo calf_data_filename= \""$calf$pfix"\", >> tmp_$pfix
 		fi
 #
 		if [ $response == '25' ]
