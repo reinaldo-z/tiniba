@@ -10,6 +10,7 @@ MODULE arrays
   USE inparams, ONLY : pmn_data_filename,rmn_data_filename,der_data_filename
 !!!FN
   USE inparams, ONLY : cal_data_filename
+  USE inparams, ONLY : calf_data_filename
   USE inparams, ONLY :  cur_data_filename
 !  USE inparams, ONLY : den_data_filename
 !!!FN
@@ -19,7 +20,7 @@ MODULE arrays
   COMPLEX(DPC), ALLOCATABLE :: momMatElem(:,:,:)
 !!!FN
   COMPLEX(DPC), ALLOCATABLE :: calMomMatElem(:,:,:)
-  !!!!!!new mayo 2008 
+  COMPLEX(DPC), ALLOCATABLE :: calCutMatElem(:,:)
   COMPLEX(DPC), ALLOCATABLE :: calPosMatElem(:,:,:)
   COMPLEX(DPC), ALLOCATABLE :: GenDerCalPosition(:,:,:,:)
   !!!!!!!
@@ -72,6 +73,18 @@ CONTAINS
           if(debug) WRITE(*,*) 'Allocated array calMomMatElem'
        ELSE
           WRITE(6,*) 'Could not allocate calMomMatElem'
+          WRITE(6,*) 'Stopping'
+          STOP
+       END IF
+    END IF
+    IF (layeredCalculation) THEN
+       if(debug)WRITE(*,*) "Allocating calCutMatElem(2,",nMax,",",nMax,")"
+       ALLOCATE (calCutMatElem(2,nMax,nMax), STAT=istat)
+       IF (istat.EQ.0) THEN
+          istat=0
+          if(debug) WRITE(*,*) 'Allocated array calCutMatElem'
+       ELSE
+          WRITE(6,*) 'Could not allocate calCutMatElem'
           WRITE(6,*) 'Stopping'
           STOP
        END IF
@@ -204,6 +217,14 @@ CONTAINS
           STOP
        END IF
     end IF
+    IF (layeredCalculation) THEN
+       DEALLOCATE (calCutMatElem, STAT=istat)
+       IF (istat.NE.0) THEN
+          WRITE(6,*) 'Could not deallocate calCutMatElem'
+          WRITE(6,*) 'Stopping'
+          STOP
+       END IF
+    end IF
      IF (ndotCalculation) THEN
         DEALLOCATE (calrho, STAT=istat)
         IF (istat.NE.0) THEN
@@ -212,7 +233,6 @@ CONTAINS
            STOP
         END IF
      END IF
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     IF (layeredCalculation) THEN
