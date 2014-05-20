@@ -275,7 +275,8 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
   DOUBLE PRECISION, DIMENSION(2,nbandk,nspinor,npw) :: cg
   DOUBLE COMPLEX, ALLOCATABLE :: cf(:,:)
   DOUBLE COMPLEX :: ci,cgn,cgm,cero
-  DOUBLE COMPLEX, DIMENSION(3) :: ctmp,ctmp1,ctmp2
+  DOUBLE COMPLEX :: ctmp, ctmp2
+  DOUBLE COMPLEX, DIMENSION(3) :: ctmp1
   DOUBLE PRECISION, DIMENSION(3) :: kmg,kmg12
   ! i,cero
   ci = cmplx(0.,1.)
