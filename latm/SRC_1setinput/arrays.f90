@@ -79,7 +79,7 @@ CONTAINS
     END IF
     IF (layeredCalculation) THEN
        if(debug)WRITE(*,*) "Allocating calCutMatElem(2,",nMax,",",nMax,")"
-       ALLOCATE (calCutMatElem(2,nMax,nMax), STAT=istat)
+       ALLOCATE (calCutMatElem(3,nMax,nMax), STAT=istat)
        IF (istat.EQ.0) THEN
           istat=0
           if(debug) WRITE(*,*) 'Allocated array calCutMatElem'
