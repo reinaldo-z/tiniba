@@ -259,10 +259,12 @@ do
     cual1=`expr $nn + $unitS1`
     cual2=`expr $nn + $unitS2`
     cual3=`expr $nn + $unitS3`
+    cual4=41
 # CalPmn
     if [[ $lpmn == "true" ]]
     then 
 	mv fort.$cual1 $diro/$caseo'_'$No/cpmnd'_'$nn
+    mv fort.$cual4 $diro/$caseo'_'$No/flmnd'_'$nn
     echo $cual1 > perro_aguayo
     fi
 # rhoccp
