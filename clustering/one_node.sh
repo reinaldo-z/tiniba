@@ -265,7 +265,7 @@ do
     if [[ $lpmn == "true" ]]
     then 
 	mv fort.$cual1 $diro/$caseo'_'$No/cpmnd'_'$nn
-    cp fort.$cual4 $diro/$caseo'_'$No/flmnd'_'$nn
+    cp fort.$cual4 $diro/$caseo'_'$No/cfmnd'_'$nn
     echo $cual1 > perro_aguayo
     echo $cual4 >> perro_aguayo
     fi
