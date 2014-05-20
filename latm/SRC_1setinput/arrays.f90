@@ -20,7 +20,7 @@ MODULE arrays
   COMPLEX(DPC), ALLOCATABLE :: momMatElem(:,:,:)
 !!!FN
   COMPLEX(DPC), ALLOCATABLE :: calMomMatElem(:,:,:)
-  COMPLEX(DPC), ALLOCATABLE :: calCutMatElem(:,:)
+  COMPLEX(DPC), ALLOCATABLE :: calCutMatElem(:,:,:)
   COMPLEX(DPC), ALLOCATABLE :: calPosMatElem(:,:,:)
   COMPLEX(DPC), ALLOCATABLE :: GenDerCalPosition(:,:,:,:)
   !!!!!!!
