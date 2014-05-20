@@ -811,6 +811,7 @@ then
     if [ $layers == 'half-slab' ]
     then
 	mv cpmnd_$Nkl'_1' me_cpmn_$Nkl'_half-slab'$last_name 
+    mv cfmnd_$Nkl'_1' me_cfmn_$Nkl'_half-slab'$last_name 
     else
 	whichlayers=`less .lista_layers`
 	if [ "$whichlayers" == "all" ]
@@ -820,6 +821,7 @@ then
 	      do
 	      nn=`expr $nn + 1`
 	      mv cpmnd_$Nkl'_'$nn  me_cpmn_$Nkl'_'$nn$last_name
+          mv cfmnd_$Nkl'_'$nn  me_cfmn_$Nkl'_'$nn$last_name
 	    done
 	else
 	    nn=0
@@ -827,10 +829,12 @@ then
 	      do
 	      nn=`expr $nn + 1`
 	      mv cpmnd_$Nkl'_'$nn  me_cpmn_$Nkl'_'$lname$last_name
+          mv cfmnd_$Nkl'_'$nn  me_cfmn_$Nkl'_'$lname$last_name
 	    done
 	fi
     fi
     ls me_cpmn_$Nkl*
+    ls me_cfmn_$Nkl*
 fi
 ## rename cpmmd file
 if [ $lpmm == 'true' ]
