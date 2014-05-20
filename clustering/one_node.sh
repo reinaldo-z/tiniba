@@ -252,6 +252,7 @@ rcp $ondi $node:$onde
 unitS1='39'
 unitS2=`expr $unitS1 + 2 \* $Nlayers`
 unitS3=`expr $unitS1 + 3 \* $Nlayers`
+unitS4=`expr $unitS1 + 4 \* $Nlayers`
 nn=0
 while [ $nn -lt $Nlayers ]
 do
@@ -259,13 +260,14 @@ do
     cual1=`expr $nn + $unitS1`
     cual2=`expr $nn + $unitS2`
     cual3=`expr $nn + $unitS3`
-    cual4=41
+    cual4=`expr $nn + $unitS4`
 # CalPmn
     if [[ $lpmn == "true" ]]
     then 
 	mv fort.$cual1 $diro/$caseo'_'$No/cpmnd'_'$nn
     mv fort.$cual4 $diro/$caseo'_'$No/flmnd'_'$nn
     echo $cual1 > perro_aguayo
+    echo $cual4 >> perro_aguayo
     fi
 # rhoccp
      if [[ $rhoccp == "true" ]]
