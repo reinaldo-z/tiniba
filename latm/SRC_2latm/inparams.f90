@@ -1,1 +1,1 @@
-latm/SRC_1setinput/inparams.f90
+../SRC_1setinput/inparams.f90
