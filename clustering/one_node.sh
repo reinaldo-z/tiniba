@@ -33,7 +33,7 @@ function option {
     fi
     if [[ $lpmn == 'true' ]]
     then
-	caso="$caso CalPmn(k)"
+	caso="$caso CalPmn(k) and CalFmn(k)"
     fi
     if [[ $lpmm == 'true' ]]
     then

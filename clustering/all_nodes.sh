@@ -376,7 +376,7 @@ source version-abinit.txt
 	    fi
 	    if [[ $lpmn == 'true' ]]
 	    then
-		caso="$caso CalPmn(k) and CalFmn(k)"
+		caso="$caso CalPmn(k)"
 	    fi
 	    if [[ $lpmm == 'true' ]]
 	    then
