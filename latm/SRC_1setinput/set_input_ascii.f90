@@ -325,7 +325,7 @@ PROGRAM set_input
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             !! The layered cut function
            IF ( layeredCalculation ) then
-              READ(92,*) (matTemp(l),l=1,6)
+              READ(92,*) (matTemp(l),l=1,2)
               IF(io_status.NE.0) THEN
                  WRITE(*,*) "ERROR: Could not read matTemp for layered calculation. Stopping"
                  WRITE(*,*) "Error number ", io_status
