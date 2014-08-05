@@ -23,7 +23,7 @@ printf "\t${cyan}--------------------${NC}\n"
 exec=`$TINIBA/utils/cual_node.sh`
 ## input at will
 eminw=0
-emaxw=20
+emaxw=2
 stepsw=2001
 #emaxw=3
 #stepsw=601
