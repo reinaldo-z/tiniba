@@ -29,7 +29,7 @@ exec="$TINIBA/utils/responses.sh"
 ## input at will
 ########### this is really set in responses.sh 
 eminw=0
-emaxw=20
+emaxw=2
 stepsw=2001
 #sicw=0
 ###########
