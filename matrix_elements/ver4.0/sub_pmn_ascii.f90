@@ -276,7 +276,7 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
   DOUBLE COMPLEX, ALLOCATABLE :: cf(:,:)
   DOUBLE COMPLEX :: ci,cgn,cgm,cero
   DOUBLE COMPLEX, DIMENSION(3) :: ctmp,ctmp1
-  DOUBLE COMPLEX, DIMENSION(3) :: ctmp2 ! Only to check
+  DOUBLE COMPLEX :: ctmp2, ctmp3 ! Layered cut function
   DOUBLE PRECISION, DIMENSION(3) :: kmg,kmg12
   ! i,cero
   ci = cmplx(0.,1.)
@@ -362,7 +362,9 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
                        ! only for b1(i) \cdot b2(i) =0?  b1(i) \cdot b3(i) = b2(i) \cdot b3(i) = 0 for sure
                        kmg = kmg12 + (2.*kp(3) + jz + iz)*b3
                        ctmp=CONJG(cgn)*cgm*kmg*cf(jz-iz,izeta)
+                       ctmp2=CONJG(cgn)*cgm*cf(jz-iz,izeta)
                        ctmp1= ctmp1 + ctmp
+                       ctmp3= ctmp3 + ctmp2
                     end if
                  end do ! jz (Gperp)
               endif
@@ -393,6 +395,7 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
            write(unitS+izeta-1,*)dreal(ctmp1(1)/2.),dimag(ctmp1(1)/2.)&
                 ,dreal(ctmp1(2)/2.),dimag(ctmp1(2)/2.)&
                 ,dreal(ctmp1(3)/2.),dimag(ctmp1(3)/2.) 
+           write(unitS+izeta*4,*)dreal(ctmp3),dimag(ctmp3)
 !              write(31,63)ik,izeta,iband,jband,dreal(ctmp1(1)/2.),dimag(ctmp1(1)/2.)&
 !                   ,dreal(ctmp1(2)/2.),dimag(ctmp1(2)/2.)&
 !                   ,dreal(ctmp1(3)/2.),dimag(ctmp1(3)/2.) 
