@@ -259,11 +259,12 @@ do
     cual1=`expr $nn + $unitS1`
     cual2=`expr $nn + $unitS2`
     cual3=`expr $nn + $unitS3`
+    cual4=`expr $nn + $unitS1 + 10`
 # CalPmn
     if [[ $lpmn == "true" ]]
     then 
     mv fort.$cual1 $diro/$caseo'_'$No/cpmnd'_'$nn
-	mv fort.$cual1 $diro/$caseo'_'$No/cfmnd'_'$nn
+	mv fort.$cual4 $diro/$caseo'_'$No/cfmnd'_'$nn
     fi
 # rhoccp
      if [[ $rhoccp == "true" ]]
