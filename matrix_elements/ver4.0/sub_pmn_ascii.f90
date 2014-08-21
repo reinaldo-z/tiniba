@@ -371,20 +371,20 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
 !!!!!!!!!!!!!!!!!!!!!! full sum
 !!! activate if need to check with above
 !!! sum over G_perp only
-              if ( 1 .eq. 2 ) then
-                 do jz =1,npw
-                    if((ix.eq.kg(1,jz)).and.(iy.eq.kg(2,jz))) then
-                       ipw = arr(ix,iy,kg(3,jz))
-                       realcg=cg(1,jband,1,ipw) !jband => m
-                       imagcg=cg(2,jband,1,ipw) !jband => m
-                       cgm=dcmplx(realcg,imagcg)
-                       kmg = kmg12 + (2.*kp(3) + jz + iz)*b3
-                       ctmp=CONJG(cgn)*cgm*kmg*cf(kg(3,jz)-iz,izeta)
-                       !ctmp=2.*CONJG(cgn)*cgm*cf(kg(3,jz)-iz,izeta)
-                       ctmp1= ctmp1 + ctmp
-                    end if
-                 end do ! jz (Gperp)
-              endif
+!!            if ( 1 .eq. 2 ) then
+!!               do jz =1,npw
+!!                  if((ix.eq.kg(1,jz)).and.(iy.eq.kg(2,jz))) then
+!!                     ipw = arr(ix,iy,kg(3,jz))
+!!                     realcg=cg(1,jband,1,ipw) !jband => m
+!!                     imagcg=cg(2,jband,1,ipw) !jband => m
+!!                     cgm=dcmplx(realcg,imagcg)
+!!                     kmg = kmg12 + (2.*kp(3) + jz + iz)*b3
+!!                     ctmp=CONJG(cgn)*cgm*kmg*cf(kg(3,jz)-iz,izeta)
+!!                     !ctmp=2.*CONJG(cgn)*cgm*cf(kg(3,jz)-iz,izeta)
+!!                     ctmp1= ctmp1 + ctmp
+!!                  end if
+!!               end do ! jz (Gperp)
+!!            endif
 !!!!!!!!!!!!!!!!!!!!!!!!
            end do ! ipw  (Gpara,Gperp)
 !!! with sum over G_perp only
