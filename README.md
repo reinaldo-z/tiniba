@@ -45,11 +45,11 @@ This project was built by the PRONASIS group of the Centro de Investigaciones en
 To-do List and WIP
 -------------------
 
-1. Correcting SHG via shg-notes (07/13/14)
+1. Correcting SHG via shg-notes
 
     The work branch of TINIBA contains some preliminary work with calpmn. The next stage is working on integrands.f90. First, take a look at Eq. I15 and compare to Eq. G2 that is already coded. These two can be placed in the same subroutine and may be readily completed.
 
-    What needs to be done: code Eqs. I15, and I17 and verify that I17 yields the same result as G2.
+    OK, so we've set the output of the layered cut function fort file to be set at 10 units higher than the calpmn file. This was modified in **sub_pmn_ascii.f90**, **concatena.pl**, **one_node.sh**, and **run_tiniba.sh**.
 
 2. `latm/SRC_1setinput`
 
