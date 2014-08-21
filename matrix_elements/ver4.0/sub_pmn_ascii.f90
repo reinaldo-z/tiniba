@@ -394,7 +394,7 @@ SUBROUTINE lpmn(unitS,u_log,ik,nbandk,nspinor,npw&
            write(unitS+izeta-1,*)dreal(ctmp1(1)/2.),dimag(ctmp1(1)/2.)&
                 ,dreal(ctmp1(2)/2.),dimag(ctmp1(2)/2.)&
                 ,dreal(ctmp1(3)/2.),dimag(ctmp1(3)/2.) 
-           write(unitS+izeta-1,*)dreal(ctmp2),dimag(ctmp2)
+           write(unitS,*)dreal(ctmp2),dimag(ctmp2)
 !              write(31,63)ik,izeta,iband,jband,dreal(ctmp1(1)/2.),dimag(ctmp1(1)/2.)&
 !                   ,dreal(ctmp1(2)/2.),dimag(ctmp1(2)/2.)&
 !                   ,dreal(ctmp1(3)/2.),dimag(ctmp1(3)/2.) 
