@@ -77,7 +77,7 @@ fi
    if [ $1 == 'hexa' ];then
      printf "\t${GREEN}compiling hexa ${NC} \n"
      make clean >> /dev/null
-     rsh  quad01 "cd $dir; make"
+     rsh  hexa1 "cd $dir; make"
      make clean >> /dev/null
     fi
 
