@@ -158,7 +158,7 @@ CONTAINS
     REAL(DP) :: integrand1(nMax), integrand2(nMax)
     REAL(DP) :: energy
     INTEGER :: i, j, k
-    REAL(DP) :: fwhm = 0.01! eV
+    REAL(DP) :: fwhm = 0.15! eV
     
    !! write(*,*)"mhwf=",mhwf
      fwhm=mhwf

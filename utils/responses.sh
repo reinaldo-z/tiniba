@@ -655,8 +655,8 @@ TIMESTARTALLI=`date`
                 printf "\t $where_smear/rsmear2_$exec \n"
                 printf "\t Ctrl C to Stop\n"
                 read -p ""
-            fi  
-	    $where_smear/rsmear2_$exec 1 $file1 $file2 > hoy     #smearing
+            fi
+	    $where_smear/rsmear2_$exec 1 $file1 $file2 0.01 > hoy     #smearing
 #	    file3=$sname.kk$label$label2
 #	    file4=$file2$label2
 	    file3=$sname.kk$ap$am$ultimo
