@@ -578,7 +578,7 @@ case=`echo $PWD | awk -F / '{print$NF}'`
 	if [[ "$adondi" == "medusa" || "$adondi" == "hexa"* ]]
 	then
 	    printf "\tErasing files at $adondi:/data/$quien/workspace/$case\n"
-	    ssh $adondi "rm -rf /data/$quien/workspace/$case"
+	    #ssh $adondi "rm -rf /data/$quien/workspace/$case"
 	fi
 	TIMEENDALL=`date`
 	printf "\t--------------------------------------------------\n"
