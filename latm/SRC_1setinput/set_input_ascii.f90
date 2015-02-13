@@ -55,7 +55,7 @@ PROGRAM set_input
   USE inparams, ONLY : nSpinor
   USE inparams, ONLY : paramFile, spectrumFile
   USE inparams, ONLY : debug
-  USE arrays, ONLY : DP, DPC, nVal, nMax, nSym, kMax, scissor, SHGscaling
+  USE arrays, ONLY : DP, DPC, nVal, nMax, nSym, kMax, scissor
   USE arrays, ONLY : energy_data_filename, energys_data_filename
   USE arrays, ONLY : pmn_data_filename, rmn_data_filename
   USE arrays, ONLY : der_data_filename, smn_data_filename
@@ -90,7 +90,8 @@ PROGRAM set_input
   !!!!!!!!!!
   !#BMSVer3.0d
   USE inparams, ONLY : vnlkss
-  !#BMSVer3.0u
+  USE inparams, ONLY : SHGscaling
+    !#BMSVer3.0u
 !  USE arrays, ONLY : denMatElem, den_data_filename
   USE arrays, ONLY : curMatElem, cur_data_filename
   USE arrays, ONLY : layeredCalculation
