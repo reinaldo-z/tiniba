@@ -52,6 +52,7 @@ laheylib="env LD_LIBRARY_PATH=/usr/local/lf9562/lib"
 dir=$PWD
 case=`echo $PWD | awk -F / '{print$NF}'`
 grep nband setUpAbinit_$case.in > hoy
+acellz=`grep "acell" setUpAbinit_$case.in|awk '{print $4}'`
 grep -v \# hoy > hoy1
 grep -v kss hoy1 > hoy2
 Nband=`head -1 hoy2 | awk '{print $2}'`
@@ -375,7 +376,8 @@ TIMESTARTALLI=`date`
 	echo scissor= $sicw, >> tmp_$pfix
 	echo tol= $toldef, >> tmp_$pfix
 ##
-         echo nSpinor= $ESPINsetUp, >> tmp_$pfix
+    echo nSpinor= $ESPINsetUp, >> tmp_$pfix
+    echo SHGscaling="${acellz}," >> tmp_$pfix 
         
 ### added 10 de diciembre de 2008 at 15:30
         if [  "$ESPINsetUp" -eq "1" ];then 
@@ -819,7 +821,7 @@ TIMESTARTALLI=`date`
 	fi
 	rm -f bc*
 	rm -f Symmetries.Cartesian* kpoints.reciprocal_$Nk kpoints.cartesian_$Nk tetrahedra_$Nk
-#        rm -rf tmp* 
+        rm -rf tmp* 
         rm -rf endWELL*		
         rm -rf hoy*
 	rm -f energys.d* fort* fromSmear halfene*
