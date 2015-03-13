@@ -246,7 +246,7 @@ if [ -e $case'_scf'/$case.out ]
     fi
 fi
 #
-rm -f spin_info
+# rm -f spin_info
 echo $espin > spin_info
 if [ -e .acell.d ]
     then
