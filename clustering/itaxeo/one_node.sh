@@ -314,7 +314,7 @@ do
     if [[ $lpmn == "true" ]]
     then 
 	mv fort.$cual1 $diro/$caseo'_'$No/cpmnd'_'$nn
-	mv fort.$cual4 $diro/$caseo'_'$No/cfmnd'_'$nn
+	# mv fort.$cual4 $diro/$caseo'_'$No/cfmnd'_'$nn
     fi
 # rhoccp
      if [[ $rhoccp == "true" ]]
