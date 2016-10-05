@@ -1,0 +1,116 @@
+\subsection{a la Cabellos-Obsolete}
+
+
+We leave this section just as DNA leaves all the usles junk that does
+not codify proteins any more, and is expensive to throw it out, so
+evolution's moto is if it ain't hurt juts carry it on. 
+This subsection only runs $\chi_{ij}(\omega)$
+and $\chi_{ijk}(2\omega)$ for bulk semiconductors. It assumes that the
+experimental or {\it GW} band gap is known, like in GaAs.
+We are planing to extend this version to other responses and the {\it
+  layer-by-layer } analysis as well. $\chi_{ijk}(2\omega)$ is
+calculated in the length-gauge  and in the velocity-gauge both wrongly
+and correctly scissored. See Cabellos et al., Phys.  Rev. B {\bf 80}, 155205-1-13 (2009).
+
+\begin{itemize}
+\item go to:\\
+\verb= cd $HOME/$TINIBA/SRC_response/SRC_set=  
+\item Make a module. This has ``two'' names, one is the name of the
+  file itself,
+i.e. \verb=ishg1la.f90=
+and the other is the name of the module itself,
+i.e. \verb=IntegrandSHG1Mod.f90=,
+ that goes as the first
+line of the file.
+The file with the module has two functions with the
+response prefactor and a ``delta function factor'' depending if the
+response is 1-$\omega$ or 2-$\omega$. It also has the subroutine with
+the integrand that codifies the response to be calculated.\\
+Then you have to link the new module to these next subroutines/modules: 
+
+\item in \verb=IntegrandsMod.f90=
+   \begin{itemize}
+   \item at the top of the file insert the
+     name of the new module, i.e. \\ \verb=USE IntegrandSHG1Mod.f90, ONLY :: SHG1= 
+   \item Asign a case nomber, i.e.\\
+     \verb=case (21)=\\
+     \verb=CALL SGH1(i_spectra)=
+   \end{itemize}
+Notice that the case number is arbitrary but is is linked to the
+\verb=ONLY :: SHG1= 
+
+\item in \verb=SymmetryOperationsMod.f90=
+
+\begin{itemize}
+
+\item write the {\it case} number in the appropriate symmetry {\it transformation},
+i.e. \\
+\verb=  CASE(21,22,26,27,28,29,30,60,61,62,63,64,65,80,81)=\\
+\verb=  CALL transformationSecondOrderResponse(i_spectra)=
+     \end{itemize}
+since the example is for SHG which is a second order response given by a third rank tensor.
+
+\item in \verb=SpectrumParametersFileMod.f90=
+      \begin{itemize}
+      \item chose the tensor rank and its total number of Cartesian
+        components, i.e.\\
+\verb= CASE(21,22)= \\
+\verb=  WRITE(6,*) "Second-harmonic generation: Length Gauge"=\\
+\verb=  dims = = 3\\
+\verb=  length = = 27
+     \end{itemize}
+
+since the rank is 3 and 3$^3$=27
+
+\item in \verb=FileControlMod.f90= include
+
+\begin{itemize}
+\item \verb=USE IntegrandSHG1Mod, ONLY : SHG1_factor, SHG1DeltaFunctionFactor=
+\item
+\verb= CASE(21)=\\
+\verb= rtmp2 = =\verb= rtmp*SHG1_factor()=\\
+\verb= iTmp ==\verb= SHG1DeltaFunctionFactor()=
+
+\end{itemize}
+
+
+\end{itemize}        
+When you finish, you have to compile in the \verb=master=, then you can make use of the 
+advanced tool MakeMakefile.PL (no one uses it) :
+\begin{enumerate}
+\item \verb=$TINIBAU/=\textcolor{darkgreen}{MakeMakefile2010.PL}
+\item
+  \verb=$TINIBAU/=\textcolor{darkgreen}{compiler.sh}\\
+and follow instructions$\ldots$ the executable is in the previous directory.
+\end{enumerate}
+% \begin{verbatim}
+% Usage [Option]:
+%  	3264        : Compile 32 and 64 bits(xeon,itanium and quad)
+% 	xeon        : Compile 32  xeon
+%  	itanium     : Compile 64 itanium
+% 	quad        : Compile 64 quad
+% 	example: ./compiler.sh 3264
+% 	Stoping right now ...
+% \end{verbatim}   
+
+
+
+After this a script has to driver this subrutine, there are several of them 
+if you want to use one of this:\\
+You have to include the number of response in those scripts\\
+/home/\$USER/\$TINIBA/SRC$_{-}$response/\textcolor{darkgreen}{responseSHG.sh}\\
+In this script include a line like this
+\begin{verbatim}
+NAMERES[1]=chi1  ;SIZERES[1]="2"
+\end{verbatim}
+As you see one of this is the name of the subroutine and other is the lenght of the tensor\\ 
+\verb=$HOME/$TINIBA/SRC_response/menu.sh= 
+In this script include a line like this
+\begin{verbatim}
+printf "\t${GREEN}22${NC} ${BLU}${NAMERES[22]}${NC}  
+(${GREEN}Length 2 omega${NC})\n"
+\end{verbatim}
+
+In order to be able to run, try it with small case. 
+if you are not able to run ask to Bernardo en the coffe 
+break in order to solve the problem. 

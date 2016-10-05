@@ -1,0 +1,32 @@
+## All hidden files except machine files and this file:
+.*
+!.machines_*.original
+!.gitignore
+
+## Potentially huge files produced by ABINIT and TINIBA
+## These are the most important files to ignore!
+eigen_*
+me_*
+*_DS*
+
+## Directories that have no reason to be tracked
+## WARNING: if you do not clean temp directories
+## after each run they will be tracked!
+JOBS/
+symmetries/
+logfiles/
+*_check/
+*_scf/
+
+## Miscellaneous intermediate files:
+finished*
+hoy*
+tetrahedra_*
+*.dat
+*.d*
+*.xy
+*.xyz.original
+spin_info
+fallo
+mtita
+nojalo

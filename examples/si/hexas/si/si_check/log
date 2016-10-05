@@ -1,0 +1,233 @@
+  ABINIT 
+  
+  Give name for formatted input file: 
+si.in
+  Give name for formatted output file:
+si.out
+  Give root name for generic input files:
+sii
+  Give root name for generic output files:
+sio
+  Give root name for generic temporary files:
+si
+
+.Version 7.10.5 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_intel16.0 computer) 
+
+.Copyright (C) 1998-2014 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Fri  5 Aug 2016.
+- ( at 10h46 )
+  
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ === Build Information === 
+  Version       : 7.10.5
+  Build target  : x86_64_linux_intel16.0
+  Build date    : 20160406
+ 
+ === Compiler Suite === 
+  C compiler       : intel16.0
+  C++ compiler     : gnu16.0
+  Fortran compiler : intel16.0
+  CFLAGS           : -axCORE-AVX2,-axSSE4.2 -ip -shared-intel -mcmodel=small -fma -fp-model precise
+  CXXFLAGS         : -m64 -g -axCORE-AVX2,-axSSE4.2 -ip -shared-intel -mcmodel=small -fma -fp-model precise
+  FCFLAGS          :  -g -extend-source -vec-report0 -noaltparam -nofpscomp
+  FC_LDFLAGS       :    -static-intel -static-libgcc
+ 
+ === Optimizations === 
+  Debug level        : basic
+  Optimization level : yes
+  Architecture       : intel_xeon
+ 
+ === Multicore === 
+  Parallel build : yes
+  Parallel I/O   : yes
+  openMP support : no
+  GPU support    : no
+ 
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : none
+  FFT flavor    : fftw3
+  LINALG flavor : netlib-fallback
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : none
+ 
+ === Experimental features === 
+  Bindings            : @enable_bindings@
+  Exports             : no
+  GW double-precision : no
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Default optimizations:
+   -axCORE-AVX2,-axSSE4.2 -ip -shared-intel -mcmodel=small -fma -fp-model precise
+
+
+ Optimizations for 43_ptgroups:
+   -g -O0
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CPP options activated during the build:
+
+                  CC_INTEL                   CXX_GNU                  FC_INTEL
+ 
+ HAVE_FC_ALLOCATABLE_DT...             HAVE_FC_ASYNC  HAVE_FC_COMMAND_ARGUMENT
+ 
+      HAVE_FC_COMMAND_LINE        HAVE_FC_CONTIGUOUS           HAVE_FC_CPUTIME
+ 
+              HAVE_FC_EXIT             HAVE_FC_FLUSH             HAVE_FC_GAMMA
+ 
+   HAVE_FC_IEEE_EXCEPTIONS             HAVE_FC_IOMSG     HAVE_FC_ISO_C_BINDING
+ 
+        HAVE_FC_LONG_LINES        HAVE_FC_MOVE_ALLOC           HAVE_FC_PRIVATE
+ 
+         HAVE_FC_PROTECTED         HAVE_FC_STREAM_IO                  HAVE_FFT
+ 
+            HAVE_FFT_FFTW3              HAVE_FFT_MPI           HAVE_FFT_SERIAL
+ 
+        HAVE_LIBPAW_ABINIT                  HAVE_MPI                 HAVE_MPI2
+ 
+       HAVE_MPI_IALLREDUCE        HAVE_MPI_IALLTOALL       HAVE_MPI_IALLTOALLV
+ 
+               HAVE_MPI_IO HAVE_MPI_TYPE_CREATE_S...                HAVE_NUMPY
+ 
+             HAVE_OS_LINUX                HAVE_TIMER         HAVE_TIMER_ABINIT
+ 
+            HAVE_TIMER_MPI         HAVE_TIMER_SERIAL              USE_MACROAVE
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- input  file    -> si.in
+- output file    -> si.out
+- root for input  files -> sii
+- root for output files -> sio
+ 
+-instrng :    46 lines of input have been read from file si.in
+ 
+
+ iofn2 : Please give name of formatted atomic psp file
+ iofn2 : for atom type   1 , psp file is /home/bms/tiniba/sean/tiniba/ver3.0/psp/14si.4.pspnc
+  read the values zionpsp=  4.0 , pspcod=   1 , lmax=   2
+nproj =      1     1     0     0
+nprojso =      0     0     0
+ 
+ inpspheads: deduce mpsang  =   3, n1xccc  =2501.
+ 
+ invars1m : enter jdtset=1
+ invars1 : treat image number     1
+ 
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+
+inread : ERROR -
+Attempted to read ndig=11 floating point digits,
+   from string(1:ndig) CHKSYMBREAK, to initialize a floating variable.
+ 
+ inarray : 
+  An error occurred reading data for keyword " XRED",
+  looking for 6 array elements.
+ DATA TYPE INFORMATION: 
+ REAL:      Data type name: REAL(DP) 
+            Kind value:      8
+            Precision:      15
+            Smallest nonnegligible quantity relative to 1:  0.22204460E-15
+            Smallest positive number:                       0.22250739-307
+            Largest representable number:                   0.17976931+309
+ INTEGER:   Data type name: INTEGER(default) 
+            Kind value: 4
+            Bit size:   32
+            Largest representable number: 2147483647
+ LOGICAL:   Data type name: LOGICAL 
+            Kind value: 4
+ CHARACTER: Data type name: CHARACTER             Kind value: 1
+  ==== Using MPI-2 specifications ==== 
+  MPI-IO support is ON
+  xmpi_tag_ub ................   2147483647
+  xmpi_bsize_ch ..............            1
+  xmpi_bsize_int .............            4
+  xmpi_bsize_sp ..............            4
+  xmpi_bsize_dp ..............            8
+  xmpi_bsize_spc .............            8
+  xmpi_bsize_dpc .............           16
+  xmpio_bsize_frm ............            4
+  xmpi_address_kind ..........            8
+  xmpi_offset_kind ...........            8
+  MPI_WTICK ..................   1.000000000000000E-006
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ === Build Information === 
+  Version       : 7.10.5
+  Build target  : x86_64_linux_intel16.0
+  Build date    : 20160406
+ 
+ === Compiler Suite === 
+  C compiler       : intel16.0
+  C++ compiler     : gnu16.0
+  Fortran compiler : intel16.0
+  CFLAGS           : -axCORE-AVX2,-axSSE4.2 -ip -shared-intel -mcmodel=small -fma -fp-model precise
+  CXXFLAGS         : -m64 -g -axCORE-AVX2,-axSSE4.2 -ip -shared-intel -mcmodel=small -fma -fp-model precise
+  FCFLAGS          :  -g -extend-source -vec-report0 -noaltparam -nofpscomp
+  FC_LDFLAGS       :    -static-intel -static-libgcc
+ 
+ === Optimizations === 
+  Debug level        : basic
+  Optimization level : yes
+  Architecture       : intel_xeon
+ 
+ === Multicore === 
+  Parallel build : yes
+  Parallel I/O   : yes
+  openMP support : no
+  GPU support    : no
+ 
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : none
+  FFT flavor    : fftw3
+  LINALG flavor : netlib-fallback
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : none
+ 
+ === Experimental features === 
+  Bindings            : @enable_bindings@
+  Exports             : no
+  GW double-precision : no
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ 
+--- !ERROR
+message: |
+    There is a problem with the input file : maybe  
+    a disagreement between the declared dimension of the array,
+    and the number of data actually provided. 
+    Action: correct your input file !
+src_file: inarray.F90
+src_line: 190
+...
+ 
+ 
+ leave_new : decision taken to exit ...

@@ -1,0 +1,131 @@
+Using 
+$\mathrm{Re}[iz]=-\mathrm{Im}[z]$,
+$\mathrm{Im}[iz]=\mathrm{Re}[z]$,
+and
+\begin{equation}\label{rnmenm91}
+{\cal R}^\rma_{nm}=\frac{{\cal P}^\rma_{nm}}{im_e\go_{nm}}
+=\frac{\calv^{LDA,\rma}_{nm}}{i\go^{LDA}_{nm}}
+=\frac{\calv^{\gS,\rma}_{nm}}{i\go^\gS_{nm}}
+\quad\quad n\ne m  
+,
+\end{equation} 
+and
+\begin{equation}\label{rnmenm92n}
+{\cal R}^\rma_{nm;k^b}=\left(\frac{{\cal V}^{\gS,a}_{nm}}{i\go^\gS_{nm}}\right)_{;k^b}
+=\frac{{\cal V}^{\gS,a}_{nm;k^b}}{i\go^\gS_{nm}}
+-
+\frac{{\cal V}^{\gS,a}_{nm}\gD^b_{nm}}{i(\go^\gS_{nm})^2}
+\quad\quad n\ne m 
+,
+\end{equation}
+we can show the equivalence between the two formulations.
+As of May 27, 2016, we take $\gs\to\gS$, $S\to\gS$, remove the $\ell$
+to denote layer, since the calligraphic type implicitly denotes it,
+the $s$ from $\chi^{\rma\rmb\rmc}$, understanding that depending on whether is a
+surface or a bulk calculation, $\chi^{\rma\rmb\rmc}$ is a surface or a
+bulk quantity.  
+\input{/Users/bms/research/austin/shg/shg-notes/appendices/chis-v-r}
+\noindent If we take ${\cal R}^{\rma}_{nm}\to r^\rma_{nm}$, 
+or
+${\cal V}^{\gS,a}_{nm}\to v^{\gS,\rma}_{nm}$, 
+we
+would recover the expressions for a bulk response.
+We prefer to display the expressions in terms of $\calv^{\gS,a}_{nm}$, since they are
+more physically appealing, as the velocity is what gives the current
+of a given layer, from which the polarization is computed and the
+$\chi^{\rma\rmb\rmc}$ is extracted. However in \tiniba, the
+expressions with $\calr^\rma_{nm}$ and     
+$\calr^\rma_{nm;k^\rmb}$, are the ones that are coded, i.e.
+Eq.~\eqref{imchiew}, \eqref{imchiwf}, \eqref{imchie2w}, 
+and \eqref{imchi2wf}.
+
+\textcolor{red}{Remark:}  
+The code normalizes $\chi^{\text{code}}$ by the volume $V$ of the unit cell, i.e.
+$\chi^{\text{code}}=\tilde\chi^{\text{code}}/V$, where
+$\tilde\chi^{\text{code}}$ is the unnormalized output value of the code.
+ For a
+surface calculation, the volume of the supercell is $V=AL$ where $L$
+is the height of the supercell, denoted by $L=$\verb=acellz= in
+\verb=TINIBA=. Therefore, to obtain the surface
+$\chi^{\text{surface}}$ we take
+\begin{equation}\label{chisurf}
+\chi^{\text{surface}}=L\times\chi^{\text{code}}
+=L\times\frac{1}{V}\tilde\chi^{\text{code}}
+=\frac{1}{A}\tilde\chi^{\text{code}}
+,
+\end{equation}
+i.e. the unnormalized $\tilde\chi^{\text{code}}$ is normalized with
+the surface area $A$ of the supercell, giving thus a surface nonlinear
+susceptibility, $\chi^{\text{surface}}$.  
+For the $\chi^{\text{surface}}$ we take the values given in
+\verb=integrands.f90=, and multiply them by
+\begin{align}\label{units.1}
+\chi^{\text{surface}}[10^6\times\text{pm}^2/\text{V}]=
+\chi^{\text{code}}\times \text{acellz}\times52.9177249/10^6
+,
+\end{align}
+then, the 
+units are in ($10^6$ pm$^2$/V). 
+The 52.9177249 factor is the conversion from Bohr to pm and
+divide by 10$^6$ to get the correct scale.
+
+The units  for $\chi^{\text{bulk}}$ must be
+\begin{align}\label{units.2}
+\chi^{\text{bulk}}=\frac{\text{m}}{\text{V}} 
+,
+\end{align} 
+The units comes from the basic definition of $\chi$ as follows
+\begin{equation}\label{u.1}
+\bfP^{\text{bulk}}=\chi^{\text{bulk}}\bfE\bfE
+,
+\end{equation}
+where the units of the bulk polarization $\bfP^{\text{bulk}}$
+ and electric field $\bfE$
+are the same and given by V/m. Therefore, the units of 
+$[\chi^{\text{bulk}}]=$m/V.
+On the other hand,
+the surface polarization $\bfP^s$ is equal to the integration along the surface of      
+the bulk polarization, i.e.                                                      
+\begin{equation}\label{u.2} 
+P^s=\int dz \bfP^{\text{bulk}}\sim d \bfP^{\text{bulk}}                                             
+,
+\end{equation} 
+where $d$ is some distance. Then,                                                  
+\begin{equation}\label{u.3}
+\bfP^s=d \chi^{\text{bulk}}\bfE\bfE                                             
+=\chi^{\text{surface}}\bfE\bfE                                             
+,
+\end{equation}
+where $\chi^s=d\chi^{\text{bulk}}$,
+thus
+$[\chi^s]=d[\chi^{\text{bulk}}]=d\times$m/V=m$^2$/V.                                                             
+
+\textcolor{red}{Remark:}  
+Above expressions with $\calv^{\gS,a}_{nm}$,
+are coded under response 44 ($1\go$) and 45 ($2\go$), and with
+${\cal R}^{a}_{nm}\to r^a_{nm}$,
+under response 21 ($1\go$) and 22 ($2\go$), in 
+\verb=integrands.f90=. 
+The expressions with $\calv^{\gS,a}_{nm}$ are those of 
+S. Andreson et al.\cite{andersonPRB15} 
+
+\textcolor{red}{Remark:} We mention that above expressions with 
+${\cal R}^{\rma,\ell}_{nm}\to r^\rma_{nm}$, are coded in
+\verb=integrands.f90=, instead of Eq. 40 and 41 of Cabellos et
+al.\cite{cabellosPRB09}, which were derived by using Eq. 19 of Aversa
+and Sipe.\cite{aversaPRB95} To obtain above equations, we started
+from Eq. 18 of Aversa and Sipe,\cite{aversaPRB95} which has the
+advantage that applying the layer-by-layer formalism is very
+transparent and straightforward. This coding is what constitutes the
+{\it Length}-gauge implementation in \tiniba, which is, within a very
+small numerical difference, equal to the {\it Velocity}-gauge
+implementation of Eq. 35 of Cabellos et al.\cite{cabellosPRB09}, also
+in \tiniba. 
+{\color{red} THE SPIN FACTOR IS PUT IN
+}\verb=file_control.f90=. 
+If there is no spin-orbit interaction the 
+factor \Verb+spin_factor=2+.  
+If there is spin-orbit interaction the 
+factor \Verb+spin_factor=1+. The final result is multiplied by  
+the \verb=spin_factor= variable. So above expressions are not
+multiplied by the spin degeneracy, the code multiplies them.   
